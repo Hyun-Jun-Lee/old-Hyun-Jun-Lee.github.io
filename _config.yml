@@ -25,7 +25,7 @@ baseurl                  : ""
 repository               : "Hyun-Jun-Lee/Hyun-Jun-Lee.github.io"
 teaser                   : 
 logo                     : 
-masthead_title           : "자기주도적인 개발자"
+masthead_title           : "스스로 공부하는 개발자"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
@@ -102,7 +102,7 @@ analytics:
 author:
   name             : "이현준"
   avatar           : "/assets/images/Blog_profile.jpg"
-  bio              : "스스로 공부할 줄 아는 개발자입니다."
+  bio              : "기록하며 공부하기!"
   location         : "Republic of Korea"
   email            :
   links:
@@ -111,9 +111,9 @@ author:
       url: "mikey1000@namver.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/Hyun-Jun-Lee"
     - label: "Portpolio"
-      icon: "fab fa-fw fa-instagram"
+      icon: "fab fa-fw fa-link"
       url: "https://autumn-macaroon-a00.notion.site/Python-0298b284a78a48958e03e79e99522884"
 
 # Site Footer

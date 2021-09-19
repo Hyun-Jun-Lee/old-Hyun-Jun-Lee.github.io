@@ -26,7 +26,7 @@ repository               : "Hyun-Jun-Lee/Hyun-Jun-Lee.github.io"
 teaser                   : 
 logo                     : 
 masthead_title           : "Make A Habit"
-# breadcrumbs            : false # true, false (default)
+breadcrumbs            : True # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : "utterances"
@@ -106,27 +106,21 @@ author:
   location         : "Republic of Korea"
   email            :
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mikey1000@namver.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Hyun-Jun-Lee"
-    - label: "Portpolio"
-      icon: "fab fa-fw fa-link"
+    - label: "resume"
+      icon: "far fa-address-book"
       url: "https://autumn-macaroon-a00.notion.site/Python-0298b284a78a48958e03e79e99522884"
 
 # Site Footer
 footer:
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mikey1000@namver.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Hyun-Jun-Lee"
-    - label: "Portpolio"
-      icon: "fab fa-fw fa-link"
+    - label: "resume"
+      icon: "far fa-address-book"
       url: "https://autumn-macaroon-a00.notion.site/Python-0298b284a78a48958e03e79e99522884"
 
 

@@ -30,7 +30,7 @@ title: "About"
 <a href="https://github.com/Hyun-Jun-Lee">
     <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=Git&logoColor=white"/>
 </a>
-<a href="https://github.com/Hyun-Jun-Lee">
+<a href="https://autumn-macaroon-a00.notion.site/Python-0298b284a78a48958e03e79e99522884">
     <img src="https://img.shields.io/badge/Resume-000000?style=flat-square&logo=Notion&logoColor=white"/>
 </a>
 </div>

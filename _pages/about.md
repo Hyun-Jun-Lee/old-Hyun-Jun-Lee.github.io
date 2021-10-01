@@ -10,6 +10,11 @@ title: "About"
 </div>
 
 
+![image](https://user-images.githubusercontent.com/76996686/135638633-e5db89d6-dee8-468d-aade-443c74431bc3.png)
+
+
+
+
 <h3>
 저는 제가 공부한 내용을 기록 및 정리를 잘 하지 못하는 약점이 있습니다.<br><br>
 이러한 약점을 극복하기 위해 Tech Blog를 운영하고 있습니다!

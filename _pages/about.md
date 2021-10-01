@@ -10,7 +10,8 @@ title: "About"
 </div>
 
 
-![image](https://user-images.githubusercontent.com/76996686/135638633-e5db89d6-dee8-468d-aade-443c74431bc3.png)
+![기언이가 그려줌](https://user-images.githubusercontent.com/76996686/135639745-2539e8c8-6b0d-45ca-9cb2-649e5a4ad924.jpg)
+
 
 
 

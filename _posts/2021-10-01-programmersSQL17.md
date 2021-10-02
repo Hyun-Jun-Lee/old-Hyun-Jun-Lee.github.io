@@ -32,6 +32,11 @@ WHERE I.ANIMAL_ID IS NULL -- ANIAML_INS 테이블에 없는 ID는 유실된 정�
 ORDER BY O.ANIMAL_ID
 ```
 
+- 두 테이블의 외래키(ANIMAL_ID) 기준으로 I 테이블과 O 테이블 JOIN
+- RIGHT JOIN 했기에 O 테이블의 모든 값 반영(입양 간 기록)
+- I 테이블에서 외래키(ANIMAL_ID)가 NULL 값(O테이블엔 잇는데 I 테이블엔 없는)인 경우 찾기
+
+
 <br>
 
 ## JOIN

@@ -9,12 +9,9 @@ title: "About"
 <h3> 기록하는 습관을 만드는 블로그</h3>
 </div>
 
-<center>
-
-![기언이가 그려줌](https://user-images.githubusercontent.com/76996686/135640404-46b607a5-3de0-419b-bba5-719a7b62fbb0.jpg)
-
-</center>
-
+<div style="text-align: center;">
+    <img src="/assets/images/by_eonki.jpg">
+</div>
 
 <h3>
 저는 제가 공부한 내용을 기록 및 정리를 잘 하지 못하는 약점이 있습니다.<br><br>

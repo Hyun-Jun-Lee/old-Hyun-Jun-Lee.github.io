@@ -33,14 +33,17 @@ from station
 
 > 문제
 
-Query a list of CITY and STATE from the STATION table.
+Query a list of CITY names from STATION for cities that have an even ID number. Print the results in any order, but exclude duplicates from the answer.
 
+- STATION 테이블에서 ID number가 짝수인 City Name을 출력해라 + 중복 X
+  - even number : 짝수 / odd number : 홀수
 
 <br>
 
 > 답
 
 ```sql
-select city, state
+select distinct city 
 from station
+where (id%2)=0;
 ```

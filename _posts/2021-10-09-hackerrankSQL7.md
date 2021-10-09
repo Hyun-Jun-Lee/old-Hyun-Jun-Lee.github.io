@@ -5,8 +5,8 @@ excerpt: "Difficulty : Easy"
 categories:
 - HackerRank SQL
 
-toc: 
-toc_sticky: True
+toc: false 
+toc_sticky: false
 
 date: 2021-10-08
 last_modified_at: 2021-10-09

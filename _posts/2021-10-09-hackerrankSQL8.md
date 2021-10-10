@@ -76,4 +76,3 @@ where right(city,1) in ('a','e','i','o','u') -- where REGEXP '[aeiou]$' -> 정�
 
 - LEFT(컬럼명, 문자열 길이) : 왼쪽 부터 시작해서 컬럼을 문자열 길이 만큼 자름
 - SUBSTRING(문자열,시작자리번호,자를문자수)
-- 정규표현식 참고 링크(https://velog.io/@gillog/MySQL-REGEXPRegular-Expression%EC%A0%95%EA%B7%9C-%ED%91%9C%ED%98%84%EC%8B%9D)

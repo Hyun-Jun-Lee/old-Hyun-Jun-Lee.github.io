@@ -13,9 +13,9 @@ title: "About"
     <img src="/assets/images/by_eonki.jpg">
 </div>
 
-<h3>
-저는 제가 공부한 내용을 기록 및 정리를 잘 하지 못하는 약점이 있습니다.<br><br>
-이러한 약점을 극복하기 위해 Tech Blog를 운영하고 있습니다!
+<h3 style="text-align: center;">
+저는 제가 공부한 내용을 잘 정리 하지 못하는 약점이 있습니다.<br><br>
+이러한 약점을 극복하기 위해 Tech Blog를 운영하고 있습니다!<br><br>
 </h3>
 
 

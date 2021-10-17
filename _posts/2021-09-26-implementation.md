@@ -9,7 +9,7 @@ toc: false
 toc_sticky: false
 
 date: 2021-09-26
-last_modified_at: 2021-09-26
+last_modified_at: 2021-10-17
 ---
 
 # [구현] 상하좌우
@@ -39,6 +39,33 @@ R R R U D D
 <br>
 
 <hr>
+
+<br>
+
+<details>
+<summary>답</summary>
+<div markdown="1">
+<br>
+n = map(int, input().split())
+data = list(map(str, input().split()))
+
+x, y = 1, 1
+
+for i in data:
+  if i=='L':
+    y -=1
+  elif i=='R':
+    y +=1
+  elif i=='U':
+    x -= 1    
+  elif i=='D':
+    x += 1
+    
+
+print(x,y)
+
+</div>
+</details>
 
 <br>
 

@@ -39,6 +39,28 @@ last_modified_at: 2021-09-27
 <br>
 
 <details>
+<summary>내 풀이</summary>
+<div markdown="1">
+<br>
+n= int(input())
+
+cnt = 0
+
+for i in range(n+1):
+  for j in range(60):
+    for k in range(60):
+      res =  str(i) + str(j) + str(k)
+      if '3' in res:
+        cnt +=1
+
+print(cnt)
+
+</div>
+</details>
+
+<br>
+
+<details>
 <summary>답</summary>
 <div markdown="1">
 <br>

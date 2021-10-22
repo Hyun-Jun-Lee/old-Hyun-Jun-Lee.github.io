@@ -42,6 +42,8 @@ last_modified_at: 2021-09-27
 <summary>내 풀이</summary>
 <div markdown="1">
 <br>
+
+```python
 n= int(input())
 
 cnt = 0
@@ -54,6 +56,7 @@ for i in range(n+1):
         cnt +=1
 
 print(cnt)
+```
 
 </div>
 </details>

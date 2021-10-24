@@ -68,6 +68,44 @@ last_modified_at: 2021-09-28
 
 ```python
 n, m = map(int, input().split())
+a, b, d = map(int, input().split())
+
+for i in range(n):
+  data = list(map(int,input().split()))
+
+# 인덱스 순서로 북동남서
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+
+# -1을해줘야 왼쪽 방향으로 돌아감
+def turn_left():
+  global d
+  d -= 1
+  if d == -1: # d 값이 0(북)에서 -1 이면 서쪽(3)
+    d = 3
+
+cnt = 0 # 캐릭터가 방문한 칸의 수
+
+
+while True: 
+  # 왼쪽으로 돌리고 시작
+  turn_left()
+  nx = a + dx[d]
+  ny = b + dy[d]
+```
+
+</div>
+</details>
+
+<br>
+
+<details>
+<summary>답</summary>
+<div markdown="1">
+<br>
+
+```python
+n, m = map(int, input().split())
 
 # # 현재 캐릭터의 위치 및 바라보는 방향
 x, y, direction = map(int, input().split())
@@ -81,7 +119,7 @@ array = []
 for i in range(n):
   array.append(list(map(int,input().split())))
 
-# 서, 북, 동, 남 방향 정의(왼쪽 바라 볼땐 북동남서)
+# 북동남서
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 

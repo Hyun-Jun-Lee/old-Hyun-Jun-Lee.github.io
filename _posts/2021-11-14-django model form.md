@@ -1,5 +1,5 @@
 ---
-title:  "[Django] django Form"
+title:  "[Django] django ModelForm"
 excerpt: "django Form"
 
 categories:
@@ -15,15 +15,16 @@ last_modified_at: 2021-11-14
 
 <br>
 
-# Django Form
+# Django ModelForm
 
-- 입력폼 html 생성(as_table(), as_p(), as_ul() 등)
-- 입력폼 유효성 검사
-- cleaned_data : 유효성 검사한 값을 dictionary 타입으로 제공
+- django Form을 상속
+- 지정된 Model로 부터 정보를 받아 Form Fields 세팅
+- 유효성 검사 통과한 값들을 save 지원(`ModelForm.save(commit=True,False)`)
+- model과 관련된 폼은 ModelForm사용 권장
 
 <br>
 
-## `forms.Form` vs `forms.ModelForm`
+## 
 
 - forms.Form : 직접 필드 정의, 위젯 설정 필요
 
@@ -174,6 +175,7 @@ else: #	GET	요청일 때
 
 ```html
 <form action="" method="post">
+    {% csrf_token %}
     <table>
       {{ form.as_table }}
     </table>

@@ -26,8 +26,8 @@ last_modified_at: 2021-11-15
 - 내부적으로 reverse 함수 사용
 
 ```python
-{% url "blog:post_detail" 100 %}
-{% url "blog:post_detail" pk=100 %}
+{% raw %}{% url "blog:post_detail" 100 %}{% endraw %}
+{% raw %}{% url "blog:post_detail" pk=100 %}{% endraw %}
 ```
 
 ### reverse()

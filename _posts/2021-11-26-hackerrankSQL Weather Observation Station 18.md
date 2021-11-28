@@ -9,14 +9,21 @@ toc: True
 toc_sticky: True
 
 date: 2021-11-26
-last_modified_at: 2021-11-26
+last_modified_at: 2021-11-28
 ---
 
 # [Basic join] Weather Observation Station 18
 
 > 문제
 
-Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than 38.7780. Round your answer to  decimal places.
+P1(a, b), P2(c, d)가 각각의 좌표
+a에는 lat_n의 최솟값, b에는 long_w의 최솟값
+
+c에는 lat_n의 최댓값, d에는 long_w의 최댓값
+
+P1과 P2 좌표 사이의  Manhattan Distance
+
+Manhattan Distance = | a - c | + | b - d |
 
 <br>
 
@@ -33,10 +40,7 @@ Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N)
 > 답
 
 ```sql
-SELECT ROUND(LONG_W,4)
+SELECT ROUND(ABS(MIN(LAT_N)-MAX(LAT_N)) + ABS(MIN(LONG_W)-MAX(LONG_W)) ,4)
 FROM STATION
-WHERE LAT_N > '38.7880'
-ORDER BY LAT_N ASC
-LIMIT 1
 ```
 

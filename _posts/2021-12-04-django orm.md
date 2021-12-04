@@ -9,7 +9,7 @@ toc: True
 toc_sticky: True
 
 date: 2021-12-04
-last_modified_at: 2021-12-04
+last_modified_at: 2021-12-05
 ---
 
 
@@ -66,7 +66,7 @@ python manage.py shell
 
 <br>
 
-## DB 데이터 읽기 (READ)
+## DB 데이터 조회 (READ)
 
 ```bash
 # 테이블 데이터 전체 출력
@@ -90,6 +90,45 @@ python manage.py shell
 ### 아메리카노 카테고리가 참조하고 있는 메뉴의 name값 출력
 >>> a2 = Category.objects.get(name='아메리카노')
 >>> a2.menu.name
+```
+
+- AND 조건
+
+```python
+queryset = 모델클래스명.objects.all()
+queryset = queryset.filter(조건필드1=조건값1, 조건필드2=조건값2)
+queryset = queryset.filter(조건필드3=조건값3)
+
+
+for model_instance in queryset:
+    print(model_instance) 
+```
+
+- OR 조건(Q객체 필요)
+
+```python
+from django.db.models import Q
+
+모델클래스명.objects.all().filter(Q(조건필드1=조건값1) | Q(조건필드2=조건값2)) # or 조건
+모델클래스명.objects.all().filter(Q(조건필드1=조건값1) & Q(조건필드2=조건값2)) # and 조건
+```
+
+ex) blog.views.post_list 에서 검색 구현
+```python
+def post_list(requests):
+    qs = Post.objects.all()   # Post 모델클래스의 전체 데이터 저장
+    q = requests.GET.get('q','')   # get파라미터중 q라는 값 저장
+    if q:  # 만약 값이 있을 경우
+        qs = qs.filter(title__icontains=q)  # 대소문자 구별없이, title에 값을 찾는다.
+    return render(requests, 'blog/post_list.html', {
+        'post_list' : qs,  
+        'q':q,})   
+
+#blog/templates/blog/post_list.html
+<form action="" method="get">
+    <input type="text" name="q" />
+    <input type="submit" value="검색" />
+</form>
 ```
 
 <br>

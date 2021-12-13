@@ -28,17 +28,13 @@ last_modified_at: 2021-12-12
 
 ### Sequence Model 종류
 
-1. One to Many
-- image captioning : 이미지 데이터에서 설명글 출력
-- language model
+![image](https://user-images.githubusercontent.com/76996686/145823877-6b60422c-7a99-47c4-b41f-26b5b07da463.png)
 
-2. Many to One
-- Sentiment Classification : 텍스트의 감정이 긍정/부정 인지 분류
-- 시계열 예측 : 과거 정보 바탕으로 미래 결과 예측
-
-3. Many to Many
-- Machine Translation : 영어문장 한글로 번역
-- Name Entity Recognition : 개체명 인식, 텍스트에서 언급된 사람, 회사 등의 개체를 인식하여 출력
+- One to One : 은닉층이 1인 신경망 모형
+- One to Many : image 속 대상에 이름 붙이는 모형
+- Many to One : word sequence를 입력받아 감정 분류를 해주는 모형
+- Many to Many : 번역 머신 모형, word sequence를 입력받아 workd sequence를 출력
+- Many to Many : 비디오의 frame 입력 받아 frame 속 대상에 이름 붙이는 모형
 
 <br>
 
@@ -57,3 +53,20 @@ x(1)으로 부터 h(1)을 얻고, 다음 스텝에서 h(1)과 x(2)를 이용해 
 - ex) 다음 단어를 예측하는 RNN (hello-o, kin-g)
 
 ![image](https://user-images.githubusercontent.com/76996686/145820539-9c35f17f-f0a1-4a49-a926-c74cf8a5fc74.png)
+
+RNN은 시간의 길이 T에 유연하기 때문에, 즉 같은 가중치를 곱해주고 은닉층에 단어의 과거 정보가 포함되기 때문에 단어의 길이와 무관하게 같은 모형을 적용할수 있다.
+
+<br>
+
+### RNN 동작 원리
+
+![image](https://user-images.githubusercontent.com/76996686/145824453-c1b8c3ea-c365-468a-bf5a-ccade10dfb15.png)
+
+1. 은닉층
+  - x(t)와 h(t-1) 필요
+  - `h(t) = T(W*h(t-1) + U*x(t))` 
+  - T : hyperbolic tangent / bias는 제외
+
+2. 출력층
+  - `o(t) = softmax(V*h(t))`
+

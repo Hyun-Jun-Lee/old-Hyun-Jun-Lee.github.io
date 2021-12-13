@@ -46,5 +46,14 @@ last_modified_at: 2021-12-12
 
 ![image](https://user-images.githubusercontent.com/76996686/145819650-2c8210b5-469e-4661-a3c9-f42dbb2340e1.png)
 
-x(1)으로 부터 h(1)을 얻고, 다음 스텝에서 h(1)과 x(2)를 이용해 과거정보와 현재 정보 모두 반영
+- 가중치
+  - U : 입력층 -> 은닉층
+  - W : t 시점의 은닉층 -> t+1 시점 은닉층
+  - V : 은닉층 -> 출력층
+
+x(1)으로 부터 h(1)을 얻고, 다음 스텝에서 h(1)과 x(2)를 이용해 과거정보와 현재 정보 모두 반영<br>
 은닉층 노드 값을 t+1 시점으로 넘겨주고, 넘겨 받은 노드의 값과 t+1 시점의 입력값을 계산하는 작업을 반복적으로 진행하기 때문에 `Recurrent`
+
+- ex) 다음 단어를 예측하는 RNN (hello-o, kin-g)
+
+![image](https://user-images.githubusercontent.com/76996686/145820539-9c35f17f-f0a1-4a49-a926-c74cf8a5fc74.png)

@@ -70,3 +70,78 @@ RNN은 시간의 길이 T에 유연하기 때문에, 즉 같은 가중치를 곱
 2. 출력층
   - `o(t) = softmax(V*h(t))`
 
+<br>
+
+## LSTM(Long Short-Term Memory)
+
+- RNN의 Long-Term dependency문제를 해결한 모델
+  - Long-Term dependency : 은닉층의 과거 정보가 마지막까지 전달되지 못하는 현상
+  - ex) "i grew up in france and want to be a plumber who the best is in the world and i speak fluent french"에서 `french`를 예측하기 위해선 앞의 `france`가 핵심이지만, 너무 초반에 있어서 뒤산까지 전달되기 어려움
+
+<br>
+
+### LSTM의 구조
+
+RNN은 이전 은닉층 값 h(t-1)과 현재 입력값 x(t)에 각각 가중치 곱하고 tanh 함수에 넣은 출력 값을 해당 순번, t의 은닉층 값 h(t)로 계산하는 과정 반복
+
+- LSTM
+
+![image](https://user-images.githubusercontent.com/76996686/145826965-dcea85e2-f454-4daf-9758-40350e074435.png)
+
+![image](https://user-images.githubusercontent.com/76996686/145827112-f41e1acc-c376-42f4-91c2-2fe19416f150.png)
+
+LSTM은 이전 단계의 정보를 memory cell에 저장하여 흘려보냄.<br>
+과거의 내용을 얼마나 지울지 곱해주고, 그 결과에 현재의 정보를 더해서 다음 시점으로 전달
+
+#### Forget Gate(망각 게이트)
+
+![image](https://user-images.githubusercontent.com/76996686/145827870-5fdb7619-c718-4bac-9ff1-d6b77dfab15a.png)
+
+현 시점의 정보 x(t)와 과거 은닉층의 값 h(t-1)에 각각 가중치를 곱하고 더한 후, sigmoid 함수 적용하여 해당 시점의 memory cell에 곱해줌<br>
+sigmoid 함수는 (0,1) 사이 값을 출력하므로, 1에 가깝다면 과거정보를 많이 활용할 것이고 0에 가까우면 과거 정보를 많이 잃게 됨.
+
+- 수식
+
+![image](https://user-images.githubusercontent.com/76996686/145828275-a42039ab-cde4-4053-805f-9e2f22c45f8e.png)
+
+<br>
+
+#### Input Gate & Candidate
+
+- Input Gate : 현 시점의 정보를 cell에 입력할 크기를 정해주는 역활
+- Candidate : 현 시점의 정보를 계산하는 역활
+
+![image](https://user-images.githubusercontent.com/76996686/145828575-73decfb4-5adf-4394-b7cc-333318a841bc.png)
+
+<br>
+
+#### Memory Cell 계산
+
+앞서 계산한 Forget gate, Input gate, Candidate 이용하여 memory cell에 저장하는 단계
+
+![image](https://user-images.githubusercontent.com/76996686/145829116-751ad812-a25c-4f10-a732-c3ce87fda822.png)
+
+<br>
+
+과거의 정보를 Forget gate에서 계산 된 만큼 지우고<br>
+현 시점의 정보 candidate에 input gate의 중요도를 곱해준 것을 더하여 현 시점의 memory cell 계산
+
+- 수식
+
+![image](https://user-images.githubusercontent.com/76996686/145829168-26723115-e85b-4ddd-abcc-ee91ad5ceb92.png)
+
+<br>
+
+#### Output Gate
+
+계산이 완료된 현 시점의 memory cell을 현 시점의 은닉층 값으로 출력할 양 결정
+
+![image](https://user-images.githubusercontent.com/76996686/145829386-3bd00029-5625-4946-bb1e-9b1eeca2efc2.png)
+
+- 수식
+
+![image](https://user-images.githubusercontent.com/76996686/145829439-26faa6f4-1d56-4de5-b088-9450763e36a6.png)
+
+
+
+> 참고 블로그 : https://yjjo.tistory.com/17?category=881892

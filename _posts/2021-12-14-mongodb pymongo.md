@@ -48,6 +48,8 @@ mycollection.insert_one({'title' : '암살', 'castings' : ['이정재', '전지�
 mycollection.inserted_id
 ```
 
+- 없는 컬렉션에 문서 삽입 시, MongoDB가 컬렉션을 자동 생성
+
 <br>
 
 ## document Read
@@ -64,6 +66,11 @@ mycollection.find_one()
  ```
 
  - `find({'키':'값'})` : 여러 데이터 찾기, 매개변수 없으면 mysql의 `SELECT *`와 같음
+
+```python
+# 0 인 경우 출력 X/ 1 인 경우 출력 O
+mycollection.find({}, { "_id": 0, "mb_name": 1, "mb_level": 1 })
+```
 
 <br>
 

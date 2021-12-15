@@ -1,6 +1,6 @@
 ---
 title:  "[MongoDB] pymongo"
-excerpt: "pymongo"
+excerpt: "pymongo CURD"
 
 categories:
 - DB
@@ -28,17 +28,23 @@ mydb=conn['mydb']
 
 # collection 연결 or 생성
 mycollection = mydb['mycollection']
+
+# collection 확인
+print(mydb.list_collection_names())
 ```
+
 
 <br>
 
 ## document INSERT
 
 - `insert_one()` == `insertOne`
+- id 직접 지정핮 ㅣ않으면 MongoDB가 스스로 고유 _id 할당
 
 ```python
 post = {"author": "Mike", "text": "My first blog post!", "tags": ["mongodb", "python", "pymongo"] }
 
+# insert_one() : InsertOneResult 객체 반환하고 해당 객체엔 document 고유 id인 insert_id 속성 내장
 mycollection.insert_one(post)
 
 # list 삽입가능
@@ -52,7 +58,7 @@ mycollection.inserted_id
 
 <br>
 
-## document Read
+## document READ
 
 - `find_one()` : 1개 데이터 찾기
 
@@ -74,3 +80,28 @@ mycollection.find({}, { "_id": 0, "mb_name": 1, "mb_level": 1 })
 
 <br>
 
+## document UPDATE
+
+- `update_one(query, newvalues)`
+  - query : {"field name":"current_value"}
+  - newvalues : {"$set":{"field_name":"new_value"}}
+
+```python
+myquery = { "mb_level": "4" }
+newvalues = { "$set": { "mb_level": "5" } }
+
+mycollection.update_one(myquery, newvalues)
+```
+
+- `update_many(query, newvalues)`
+  - query : {"field_name" : {"$regex": "정규표현식"}}
+  - newvalues : {"$set" : {"field_name": "new_value"}}
+
+```python
+myquery = { "mb_level": { "$regex": "^4" } }
+newvalues = { "$set": { "mb_level": "5" } }
+
+x = mycollection.update_many(myquery, newvalues)
+
+print(x.modified_count, "documents updated.")
+```

@@ -47,3 +47,23 @@ mycollection.insert_one({'title' : '암살', 'castings' : ['이정재', '전지�
 # primary key 확인
 mycollection.inserted_id
 ```
+
+<br>
+
+## document Read
+
+- `find_one()` : 1개 데이터 찾기
+
+```python
+mycollection.find_one()
+
+{'_id': ObjectId('5d329c5fc92b6508c3f5d300'),
+ 'author': 'Mike',
+ 'text': 'My first blog post!',
+ 'tags': ['mongodb', 'python', 'pymongo']}
+ ```
+
+ - `find({'키':'값'})` : 여러 데이터 찾기, 매개변수 없으면 mysql의 `SELECT *`와 같음
+
+<br>
+

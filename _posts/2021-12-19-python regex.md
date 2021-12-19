@@ -1,60 +1,34 @@
 ---
-title:  "Dictionary"
-excerpt: "python"
+title:  "Python 정규표현식"
+excerpt: "정규 표현식 기초, 반복"
 
 categories:
-- DB
+- Python
 
 toc: True
 toc_sticky: True
 
-date: 2021-12-17
-last_modified_at: 2021-12-17
+date: 2021-12-19
+last_modified_at: 2021-12-19
 ---
 
-# Dictionary
+# 정규표현식
 
-## 특징
+## 문자클래스
 
-- {key:value} 형태, 각각의 쌍은 ','로 구분
-- key는 중복 x, 이미 사용중인 key 사용하면 그 전 key는 무시
-- value에 리스트 이용하여 여러 값 넣기 가능({'A':['a','b']})
-- key에 리스트 형태 X, 튜플 형태는 가능
+- `\d` : 숫자 매치, [0-9]와 동일
+- `\D` : 숫자 외의 것 매치, [^0-9]
+- `\s` : whitespace와 매치, [ \t\n\r\f\v]와 동일(맨 앞의 빈 칸은 공백(space)를 의미)
+- `\S` : whitespace가 아닌 것과 매치, [^ \t\n\r\f\v]와 동일
+- `\w` : 문자+숫자(alphanumeric)와 매치, [a-zA-Z0-9_]와 동일
+- `\W` : 문자+숫자(alphanumeric)가 아닌 문자와 매치, [^a-zA-Z0-9_]와 동일
 
 <br>
 
-# 출력
+## 반복
 
-- value 출력
+- `*` : `*` 앞에 있는 문자가 무한 반복 될 수 있다는 것을 의미
+  - ex1) 문자열='caaat', 정규식=`ca*t` -> 'a'가 3번 반복되어 매치
 
-```python
-a = {'A':['b','c'], 'B':['a','e']}
-
-# 슬라이싱
-a['A']
-
-# get
-a.get('A')
-
-# 모든 value
-a.values()
-```
-
-- Key 출력
-
-```python
-a = {'A':['b','c'], 'B':['a','e']}
-
-a.keys()
-```
-
-- Key, Value 출력
-
-```python
-a = {'A':['b','c'], 'B':['a','e']}
-
-a.items()
-
-for key,value in a.items():
-  print(key,value)
-```
+- `+` : chlth 1qjsdltkd qksqhr
+  - ex1) 문자열='ct', 정규식=`ca+t` -> 'a'가 3번 반복되어 매치

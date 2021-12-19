@@ -3,7 +3,7 @@ title:  "Dictionary"
 excerpt: "python"
 
 categories:
-- Python
+- DB
 
 toc: True
 toc_sticky: True

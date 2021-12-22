@@ -55,3 +55,33 @@ print('단어 토큰화3 :',text_to_word_sequence("Don't be fooled by the dark s
 ```
 
 keras의 text_to_word_sequence는 기본적으로 모든 알파벳을 소문자로 바꾸면서 마침표나 컴마, 느낌표 등의 구두점을 제거
+
+<br>
+
+### Sentence Tokenization
+
+- `sent_tokenize()`
+
+```python
+from nltk.tokenize import sent_tokenize
+
+text = "His barber kept his word. But keeping such a huge secret to himself was driving him crazy. Finally, the barber went up a mountain and almost to the edge of a cliff. He dug a hole in the midst of some reeds. He looked about, to make sure no one was near."
+
+print('문장 토큰화1 :',sent_tokenize(text))
+>>> 문장 토큰화1 : ['His barber kept his word.', 'But keeping such a huge secret to himself was driving him crazy.', 'Finally, the barber went up a mountain and almost to the edge of a cliff.', 'He dug a hole in the midst of some reeds.', 'He looked about, to make sure no one was near.']
+```
+
+- `KSS(Korean Sentence Splitter)`
+
+```python
+import kss
+
+text = '딥 러닝 자연어 처리가 재미있기는 합니다. 그런데 문제는 영어보다 한국어로 할 때 너무 어렵습니다. 이제 해보면 알걸요?'
+
+print('한국어 문장 토큰화 :',kss.split_sentences(text))
+>>> 한국어 문장 토큰화 : ['딥 러닝 자연어 처리가 재미있기는 합니다.', '그런데 문제는 영어보다 한국어로 할 때 너무 어렵습니다.', '이제 해보면 알걸요?']
+```
+
+<br>
+
+### 품사 태깅(Part-of-speech tagging)

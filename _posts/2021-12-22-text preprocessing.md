@@ -1,6 +1,6 @@
 ---
-title:  "Text Preprocessing"
-excerpt: ""
+title:  "Tokenization"
+excerpt: "Text Preprocessing"
 
 categories:
 - AIB2 Study
@@ -12,7 +12,7 @@ date: 2021-12-22
 last_modified_at: 2021-12-22
 ---
 
-# Text Preprocessing
+# Tokenization
 
 ## Tokenization
 
@@ -85,3 +85,63 @@ print('한국어 문장 토큰화 :',kss.split_sentences(text))
 <br>
 
 ### 품사 태깅(Part-of-speech tagging)
+
+- NLTK
+
+```python
+from nltk.tokenize import word_tokenize
+from nltk.tag import pos_tag
+
+text = "I am actively looking for Ph.D. students. and you are a Ph.D. student."
+tokenized_sentence = word_tokenize(text)
+
+print('단어 토큰화 :',tokenized_sentence)
+print('품사 태깅 :',pos_tag(tokenized_sentence))
+
+>>> 단어 토큰화 : ['I', 'am', 'actively', 'looking', 'for', 'Ph.D.', 'students', '.', 'and', 'you', 'are', 'a', 'Ph.D.', 'student', '.']
+>>> 품사 태깅 : [('I', 'PRP'), ('am', 'VBP'), ('actively', 'RB'), ('looking', 'VBG'), ('for', 'IN'), ('Ph.D.', 'NNP'), ('students', 'NNS'), ('.', '.'), ('and', 'CC'), ('you', 'PRP'), ('are', 'VBP'), ('a', 'DT'), ('Ph.D.', 'NNP'), ('student', 'NN'), ('.', '.')]
+```
+
+'VBP'는 동사, 'RB'는 부사, 'VBG'는 현재부사, 'IN'은 전치사, 'NNP'는 고유 명사, 'NNS'는 복수형 명사, 'CC'는 접속사, 'DT'는 관사
+
+<br>
+
+- KoNLPy
+  - konlpy는 형태소 분석기로 Okt(Open Korea Text), 메캅(Mecab), 코모란(Komoran), 한나눔(Hannanum), 꼬꼬마(Kkma)가 있음
+
+Okt
+
+```python
+from konlpy.tag import Okt
+
+okt = Okt()
+
+# morphs : 형태소 추출
+print('OKT 형태소 분석 :',okt.morphs("열심히 코딩한 당신, 연휴에는 여행을 가봐요"))
+# pos : 품사태깅(Part-ofspeech tagging)
+print('OKT 품사 태깅 :',okt.pos("열심히 코딩한 당신, 연휴에는 여행을 가봐요"))
+# nouns : 명사 추출
+print('OKT 명사 추출 :',okt.nouns("열심히 코딩한 당신, 연휴에는 여행을 가봐요")) 
+
+>>> OKT 형태소 분석 : ['열심히', '코딩', '한', '당신', ',', '연휴', '에는', '여행', '을', '가봐요']
+>>> OKT 품사 태깅 : [('열심히', 'Adverb'), ('코딩', 'Noun'), ('한', 'Josa'), ('당신', 'Noun'), (',', 'Punctuation'), ('연휴', 'Noun'), ('에는', 'Josa'), ('여행', 'Noun'), ('을', 'Josa'), ('가봐요', 'Verb')]
+>>> OKT 명사 추출 : ['코딩', '당신', '연휴', '여행']
+```
+
+kkma
+
+```python
+from konlpy.tag import Okt
+from konlpy.tag import Kkma
+
+kkma = Kkma()
+
+print('꼬꼬마 형태소 분석 :',kkma.morphs("열심히 코딩한 당신, 연휴에는 여행을 가봐요"))
+print('꼬꼬마 품사 태깅 :',kkma.pos("열심히 코딩한 당신, 연휴에는 여행을 가봐요"))
+print('꼬꼬마 명사 추출 :',kkma.nouns("열심히 코딩한 당신, 연휴에는 여행을 가봐요"))  
+
+>>> 꼬꼬마 형태소 분석 : ['열심히', '코딩', '하', 'ㄴ', '당신', ',', '연휴', '에', '는', '여행', '을', '가보', '아요']
+>>> 꼬꼬마 품사 태깅 : [('열심히', 'MAG'), ('코딩', 'NNG'), ('하', 'XSV'), ('ㄴ', 'ETD'), ('당신', 'NP'), (',', 'SP'), ('연휴', 'NNG'), ('에', 'JKM'), ('는', 'JX'), ('여행', 'NNG'), ('을', 'JKO'), ('가보', 'VV'), ('아요', 'EFN')]
+>>> 꼬꼬마 명사 추출 : ['코딩', '당신', '연휴', '여행']
+```
+

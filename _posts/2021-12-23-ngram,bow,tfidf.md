@@ -79,7 +79,11 @@ $$P(입니다|안녕하세요 저는 이현준) = \frac{count(안녕하세요 �
 
 ### 한계점
 
-- count 기반 접근을 하려면 방대한 양의 corpus data가 필요하다(위의 예에서 '안녕하세요 저는 이현준'이 corpus data에 없다면 확률은 0이 되어 버림)
+- 희소 문제(Sparsity Problem)
+
+count 기반 접근을 하려면 방대한 양의 corpus data가 필요하다(위의 예에서 '안녕하세요 저는 이현준'이 corpus data에 없다면 확률은 0이 되어 버림)
+
+<br>
 
 ## N-gram
 

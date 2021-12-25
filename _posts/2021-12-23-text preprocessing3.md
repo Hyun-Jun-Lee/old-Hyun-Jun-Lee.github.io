@@ -126,3 +126,72 @@ print(tokenizer.word_index)
 print(tokenizer.word_counts)
 >>> OrderedDict([('barber', 8), ('person', 3), ('huge', 5), ('secret', 6), ('kept', 4)])
 ```
+
+<br>
+
+## Padding
+
+### Numpy
+
+```python
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(preprocessed_sentences)
+encoded = tokenizer.texts_to_sequences(preprocessed_sentences)
+
+print(encoded)
+>>> [[1, 5], [1, 8, 5], [1, 3, 5], [9, 2], [2, 4, 3, 2], [3, 2], [1, 4, 6], [1, 4, 6], [1, 4, 2], [7, 7, 3, 2, 10, 1, 11], [1, 12, 3, 13]]
+
+max_len = max(len(item) for item in encoded)
+print('최대 길이 :',max_len)
+>>> 최대 길이 : 7
+```
+
+모든 문장의 길이를 최대 길이 7로 맞춤<br>
+7보다 짧은 문장은 숫자 0을 채워서 길이 맞추고 긴 문장은 데이터 손실( 데이터가 손실될 경우에 앞의 단어가 아니라 뒤의 단어가 삭제되도록 하고싶다면 `truncating='post'` )
+
+```python
+for sentence in encoded: # 각 문장에 대해서
+    while len(sentence) < max_len: # max_len보다 작으면
+        sentence.append(0)
+
+padded_np = np.array(encoded)
+
+padded_np
+>>>
+array([[ 1,  5,  0,  0,  0,  0,  0],
+       [ 1,  8,  5,  0,  0,  0,  0],
+       [ 1,  3,  5,  0,  0,  0,  0],
+       [ 9,  2,  0,  0,  0,  0,  0],
+       [ 2,  4,  3,  2,  0,  0,  0],
+       [ 3,  2,  0,  0,  0,  0,  0],
+       [ 1,  4,  6,  0,  0,  0,  0],
+       [ 1,  4,  6,  0,  0,  0,  0],
+       [ 1,  4,  2,  0,  0,  0,  0],
+       [ 7,  7,  3,  2, 10,  1, 11],
+       [ 1, 12,  3, 13,  0,  0,  0]])
+```
+
+<br>
+
+### Keras
+
+```python
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+padded = pad_sequences(encoded)
+
+padded
+>>>
+array([[ 0,  0,  0,  0,  0,  1,  5],
+       [ 0,  0,  0,  0,  1,  8,  5],
+       [ 0,  0,  0,  0,  1,  3,  5],
+       [ 0,  0,  0,  0,  0,  9,  2],
+       [ 0,  0,  0,  2,  4,  3,  2],
+       [ 0,  0,  0,  0,  0,  3,  2],
+       [ 0,  0,  0,  0,  1,  4,  6],
+       [ 0,  0,  0,  0,  1,  4,  6],
+       [ 0,  0,  0,  0,  1,  4,  2],
+       [ 7,  7,  3,  2, 10,  1, 11],
+       [ 0,  0,  0,  1, 12,  3, 13]], dtype=int32)
+```
+
+`Numpy`로 패딩을 진행하였을 때와는 패딩 결과가 다른 이유는 `pad_sequences`는 기본적으로 문서의 뒤에 0을 채우는 것이 아니라 앞에 0으로 채우기 때문(뒤에 0을 채우고 싶다면 인자로 `padding='post'`)

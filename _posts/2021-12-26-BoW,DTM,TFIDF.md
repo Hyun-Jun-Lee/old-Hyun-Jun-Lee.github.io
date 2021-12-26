@@ -117,3 +117,73 @@ I가 사라진 이유는 CountVectorizer가 기본적으로 길이가 2이상인
 <br>
 
 ## TF-IDF(Term Frequency-Inverse Document Frequency)
+
+단어의 빈도와 역 문서 빈도(문서의 빈도에 특정 식을 취함)를 사용하여 DTM 내의 각 단어들마다 중요한 정도를 가중치로 주는 방법
+
+<br>
+
+TF-IDF는 주로 문서의 유사도를 구하는 작업, 검색 시스템에서 검색 결과의 중요도를 정하는 작업, 문서 내에서 `특정 단어의 중요도`를 구하는 작업에 주로 사용
+
+- 문서를 d, 단어를 t, 문서의 총 개수를 n이라고 표현할 때 TF, DF, IDF 정의
+
+1. tf(d,t) : 특정 문서 d에서의 특정 단어 t의 등장 횟수(DTM의 값)
+2. dt(t) : 특정 단어 t가 등장한 문서의 수
+3. idf(d, t) : df(t)에 반비례하는 수
+
+$$idf(d,t) = \log(\frac{n}{1+df(t)})$$
+
+IDF는 DF의 역수로, 총 문서의 수 n이 커질 수록 IDF의 값이 기하급수적으로 커지기 때문에 log 사용, log를 사용하지 않으면 희귀 단어에 엄청난 가중치가 부여되기 때문<br>
++1을 해주는 이유는 특정 단어가 전체 문서에서 등장하지 않을 경우에 분모가 0이 되는 상황을 방지 위함. 
+ 
+<br>
+
+TF-IDF는 모든 문서에서 자주 등장하는 단어는 중요도가 낮다고 판단하고, 특정 문서에서만 자주 등장하는 단어는 중요도가 높다고 판단. TF-IDF 값이 낮으면 중요도가 낮은 것이며, TF-IDF 값이 크면 중요도가 큰 것
+
+### 사이킷런을 이용한 DTM과 TF-IDF 실습
+
+- DTM
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+
+corpus = [
+    'you know I want your love',
+    'I like you',
+    'what should I do ',    
+]
+
+vector = CountVectorizer()
+
+# 코퍼스로부터 각 단어의 빈도 수를 기록한다.
+print(vector.fit_transform(corpus).toarray()) 
+>>> [[0 1 0 1 0 1 0 1 1]
+    [0 0 1 0 0 0 0 1 0]
+    [1 0 0 0 1 0 1 0 0]]
+
+# 각 단어의 인덱스가 어떻게 부여되었는지를 보여준다.
+print(vector.vocabulary_) 
+>>> {'you': 7, 'know': 1, 'want': 5, 'your': 8, 'love': 3, 'like': 2, 'what': 6, 'should': 4, 'do': 0}
+```
+
+- TfidfVectorizer
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+corpus = [
+    'you know I want your love',
+    'I like you',
+    'what should I do ',    
+]
+
+tfidfv = TfidfVectorizer().fit(corpus)
+
+print(tfidfv.transform(corpus).toarray())
+>>>
+[[0.         0.46735098 0.         0.46735098 0.         0.46735098 0.         0.35543247 0.46735098]
+ [0.         0.         0.79596054 0.         0.         0.         0.         0.60534851 0.        ]
+ [0.57735027 0.         0.         0.         0.57735027 0.         0.57735027 0.         0.        ]]
+
+print(tfidfv.vocabulary_)
+>>> {'you': 7, 'know': 1, 'want': 5, 'your': 8, 'love': 3, 'like': 2, 'what': 6, 'should': 4, 'do': 0}
+```

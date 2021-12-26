@@ -1,5 +1,5 @@
 ---
-title:  "언어모델/N-gram"
+title:  "언어모델/N-gram/perplexity"
 excerpt: "Languagel Model, SLM, N-gram"
 
 categories:
@@ -87,4 +87,30 @@ count 기반 접근을 하려면 방대한 양의 corpus data가 필요하다(�
 
 ## N-gram
 
+카운트에 기반한 통계적 접근을 사용하고 있는 SLM의 일종으로, 모든 단어를 고려하는 것이 아니라 일부 단어만 고려하여 예측<br>
 
+SLM은 corpus data에 확률을 계산하려는 문장이 없을 수 있는 것이 한계점인데 이것을 극복하기 위해 참고하는 단어 카운트를 줄인다.
+
+예를 들어, '안녕하세요 저는 이현준'가 나왔을 때 '입니다'가 나올 확률을 계산 할 때, corpus data에 '안녕하세요 저는 이현준'이 있을 확률보다 '이현준 입니다' 라는 더 짧은 단어 시퀀스가 존재할 가능성이 더 높다. 
+
+<br>
+
+- 'An adorable little boy is spreading smiles'이라는 문장의 n-gram
+  - unigrams(n=1) : an, adorable, little, boy, is, spreading, smiles
+  - bigrams(n=2) : an adorable, adorable little, little boy, boy is, is spreading, spreading smiles
+  - trigrams(n=3) : an adorable little, adorable little boy, little boy is, boy is spreading, is spreading smiles
+  - 4-grams(n=4) : an adorable little boy, adorable little boy is, little boy is spreading, boy is spreading smiles
+
+N-gram에서 다음 단어의 예측은 n-1개의 단어에만 의존(n=4라면, 앞의 3개의 단어만 고려)
+
+<br>
+
+### 한계점
+
+- 희소 문제(Sparsity Problem)
+  - 일부 단어만을 보는 것으로 현실적으로 코퍼스에서 카운트 할 수 있는 확률을 높일 수는 있었지만, n-gram 언어 모델도 여전히 n-gram에 대한 희소 문제가 존재
+- n을 선택하는 것은 trade-off 문제
+  - n을 크게 설정
+    - corpus data에 해당 n-gram을 카운트할 수 있는 확률이 적어져서 희소 문제가 커지고 모델 사이즈가 커짐
+  - n을 작게 설정
+    - corpus data에서 카운트는 잘되지만 정확도 떨어짐(권장 n은 5 이하)

@@ -42,5 +42,6 @@ while True:
 ```
 
 - `While True`로 while문을 무한루프로
-- 테스트 케이스의 총 수가 따로 주어지지 않았으니까 
-- a+b값 출력
+- 테스트 케이스의 총 수가 따로 주어지지 않았으니까 `try-expect` 활용
+  - try : a,b에 int형 입력 받고 a+b 출력
+  - except : try에 에러가 발생한 경우(더이상 입력값이 없는 경우, int형이 아닌 값이 입력된 경우) break

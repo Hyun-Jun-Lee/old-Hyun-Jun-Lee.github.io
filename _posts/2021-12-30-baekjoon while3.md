@@ -35,7 +35,7 @@ N이 주어졌을 때, N의 사이클의 길이를 구하는 프로그램을 작
 
 <br>
 
-> 풀이1
+> 풀이 1
 
 ```python
 n= temp = int(input()) # 68
@@ -59,4 +59,24 @@ while True:
 print(cnt)
 ```
 
+> 풀이 2
+
+```python
+n = temp = input() # str로 입력받고 리스트로 저장됨, [6,8]
+cnt = 0
+
+while True:
+    # 주어진 수가 10보다 작으면 0붙이기
+    if len(temp) == 1:
+        temp = "0" + temp
+    # int형으로 먼저 더해준 후 다시 str형으로
+    a = str(int(temp[0])+int(temp[1])) # 6 + 8 = 14
+    # 뒤에있는 숫자 불러오기
+    temp = temp[-1] + a[-1] # '8' + '4' = '84'
+    cnt += 1
+    if temp == n:
+        break
+
+print(cnt)
+```
 

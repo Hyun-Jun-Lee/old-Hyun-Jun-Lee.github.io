@@ -43,4 +43,5 @@ for i in range(10):
     print(num.count(str(i)))
 ```
 
-- a,b,c를 입력 받고 곱한 후 str형으로 변환 후 list로 묶어주면 
+- a,b,c를 입력 받고 곱한 후 str형으로 변환 후 list로 묶어주기
+- `count()` 메서드 

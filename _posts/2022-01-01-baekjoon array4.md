@@ -33,15 +33,14 @@ last_modified_at: 2022-01-01
 > 풀이
 
 ```python
-a = int(input())
-b = int(input())
-c = int(input())
-
-num = list(str(a * b * c)) # [1,7,0,3,7,3,0,0]
+arr = []
 
 for i in range(10):
-    print(num.count(str(i)))
+    n = int(input())
+    arr.append(n%42)
+
+arr = set(arr)
+print(len(arr))
 ```
 
-- a,b,c를 입력 받고 곱한 후 str형으로 변환 후 list로 묶어주기
-- `count()` 메서드 
+- set() 메서드로 중복 제거

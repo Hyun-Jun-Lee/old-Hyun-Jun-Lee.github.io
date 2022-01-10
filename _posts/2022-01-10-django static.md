@@ -38,3 +38,29 @@ django는 하나의 Project에 다수의 App 구조로, 하나의 App을 위한 
 Project 전반적으로 사용되는 static 파일은 `settings.STATICFILES_DIRS`에 지정된 경로에 저장함.
 
 다수의 디렉토리에 저장된 static 파일은 `python manage.py collectstatic` 명령어를 통해, `settings.STATIC_ROOT`에서 지정한 경로로 복사해서 서비스에 사용.
+
+<br>
+
+### settings example
+
+`STATIC_URL = '/static/'` 
+
+각 static 파일에 대한 URL Pre fix<br>
+템플릿 태그 `{% raw %}{% static "경로" %}{% endraw %}`에 의해 참조 되는 설정(항상 /로 끝나도록 설정)
+
+<br>
+
+`STATIC_ROOT = os.path.join(BASE_DIR, 'static')`
+
+`python manage.py collectstatic` 명령어가 참조되는 설정<br>
+여러 디렉토리로 나누어진 static 파일을 해당 경로의 디렉토리로 복사(배포 단계에서 주로 쓰임)
+
+<br>
+
+```python
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR, 'askdjango'
+, 'static'),
+]
+```
+

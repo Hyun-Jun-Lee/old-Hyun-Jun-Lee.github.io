@@ -30,3 +30,11 @@ last_modified_at: 2021-01-10
 <br>
 
 ## Static
+
+### Static 경로
+
+django는 하나의 Project에 다수의 App 구조로, 하나의 App을 위한 static 파일을 `app/static/app` 경로에 저장.
+
+Project 전반적으로 사용되는 static 파일은 `settings.STATICFILES_DIRS`에 지정된 경로에 저장함.
+
+다수의 디렉토리에 저장된 static 파일은 `python manage.py collectstatic` 명령어를 통해, `settings.STATIC_ROOT`에서 지정한 경로로 복사해서 서비스에 사용.

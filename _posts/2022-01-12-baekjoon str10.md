@@ -81,4 +81,4 @@ index번째 단어와 index+1번째 단어를 비교해야 하는데, 단어의 
         group_word += 1
 ```
 
-count에서 0을 반환하면 그룹단어 이므로 group_word에 1 증가
+count에서 0을 반환하면 그룹단어 이므로 group_word에 1 증가g

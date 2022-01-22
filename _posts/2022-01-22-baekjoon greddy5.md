@@ -44,37 +44,33 @@ last_modified_at: 2022-01-22
 > 풀이
 
 ```python
-import sys
+n = int(input())
 
+km = list(map(int,input().split()))
+oil_price = list(map(int,input().split()))
 
-n = sys.stdin.readline().split('-')
+# 첫 도시는 무지껀 기름 채워야함
+cost = oil_price[0] * km[0]
+# 현재 가장 싼 주유가격
+chepest = oil_price[0]
+# 지금까지 온 거리
+dist = 0
 
-min_value = 0
+for i in range(1, n-1):
+    # 지금까지 주유 가격보다 이번 도시에서 주유가격이 더 싸면
+    if oil_price[i]<chepest:
+        # 가장 싼 주유가격 * 지금까지 온 거리
+        cost += chepest * dist
+        # 지금까지 온 거리 및 가장 싼 주유가격 갱신
+        dist = km[i]
+        chepest = oil_price[i]
+    else:
+        dist += km[i]
+    # 마지막 도로 계산
+    if i == n-2:
+        cost += chepest * dist
 
-# 첫번재 인덱스는 '-'가 나오기 전이므로 다 더해줌
-for i in n[0].split('+'):
-    min_value += int(i)
-
-# 첫번째 인덱스를 제외한 다음 숫자들은 모두 빼주면 최소값
-for j in n[1:]:
-    for k in j.split('+'):
-        min_value -= int(k)
-
-print(min_value)
-
+print(cost)
 ```
 
-최소값으로 만들기 위해서는 +를 기준으로 모두 더해준 후에 남겨진 값들을 빼주면 항상 최소값이 된다.
-
-- 입력받은 식을 '-' 기준으로 나누기
-- 분리된 식에서 '+'가 있는 부분은 계산
-- 0번째 인덱스에 있는 숫자에 뒤에잇는 모든 수 빼주기
-
-ex)
-
-```
-55-50+40-30+20
-```
-
-입력 받았을 때, '-' 기준으로 분리하면 `55-(50+40)-(30+20)` <br>
-split('-')으로 입력 받으면 `[‘55’, ‘50 + 40’, ‘30 + 20’]` 이렇게 되는데 여기서 0번 인덱스의 값(55)에 뒤에 모든 수를 빼주면 최소값이 된다.
+- for문을 통해 현재 주유 가격보다 더 싼 가격이 나오면 갱신하면서 풀어가기

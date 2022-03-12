@@ -112,7 +112,7 @@ def SignUp(request):
             form.save()
             email = form.cleaned_data.get("email")
             password = form.cleaned_data.get("password")
-            # authenticate() : 자격증명이 유효하면 usr 객채 생성, 유효하지 않으면 None
+            # authenticate() :  username과 password가 일치할 때 user를 반환하고 그렇지 않으면 None을 반환
             user = authenticate(request, username=email, password=password)
             user.save()
             return redirect(reverse("core:home"))
@@ -155,3 +155,8 @@ class SignUpView(FormView):
             print(error)
             return redirect(reverse("users:signup"))
 ```
+
+### Error display
+
+- `raise forms.ValidationError()` : 화면 상단에 error message가 display
+- `self.add_error()` : error가 발생한 field 근처에 error message가 display 

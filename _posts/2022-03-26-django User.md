@@ -8,11 +8,13 @@ categories:
 toc: True
 toc_sticky: True
 
-date: 2022-03-26
-last_modified_at: 2022-03-26
+date: 2022-04-02
+last_modified_at: 2022-04-02
 ---
 
 # [Django] Custom User Model
+
+- 소스코드 : https://github.com/django/django/blob/main/django/contrib/auth/models.py
 
 Django는 기본적으로 User model을 제공 하지만, 이 것만 가지고는 서비스를 만들기 어렵고 custom model을 만들기 위해서는 주로 `BaseUserManager`, `AbstractBaseUser` 클래스를 사용한다.
 
@@ -66,9 +68,12 @@ class User(AbstractUser):
 
     objects = UserManager()
 
+    # username 필드를 email 필드로 지정
     USERNAME_FIELD = 'email'
+    # 필수 필드 지정
     REQUIRED_FIELDS = []
 ```
 
 - `AbstractUser`을 상혹할 때는 `settings.py`에서 `AUTH_USER_MODEL = '폴더명.클래스명'`을 추가해야 migrate가 된다.
 - User Model을 보면 `name`,`email` 등 필드가 있고 원하는 필드를 더 추가 할 수 있다.
+- `AbstractUser`는 'username', 'first_name', 'last_name', ... 등의 필드를 기본으로 제공

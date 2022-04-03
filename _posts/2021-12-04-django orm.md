@@ -8,8 +8,8 @@ categories:
 toc: True
 toc_sticky: True
 
-date: 2021-12-04
-last_modified_at: 2021-12-05
+date: 2022-12-04
+last_modified_at: 2022-04-02
 ---
 
 
@@ -129,6 +129,20 @@ def post_list(requests):
     <input type="text" name="q" />
     <input type="submit" value="검색" />
 </form>
+```
+
+- 특정 필드만 가져오기
+
+```python
+# values() : 해당 컬럼의 key,value 쌍의 리스트 반환
+>>> Room.objects.values("city")
+[{"city":"seoul"}, {"city":"newyork"}, ...]
+
+# values_list() : key,value 형태가 아닌 tuples 형태의 리스트로 만환
+[("city","seoul"), ...]
+
+# values_list(flat=True) : value의 리스트 형태로 반환
+["seoul","newyork", ...]
 ```
 
 <br>

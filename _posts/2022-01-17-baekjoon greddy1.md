@@ -88,3 +88,23 @@ for i in coin_list:
 4200%1000 = 200 (cnt=4, k=200)
 200%500 = 200 (cnt=4, k=200)
 200%100 = 0 (cnt=6, k=0)
+
+> 다른 풀이
+
+```python
+n, k = map(int, input().split())
+m = []
+num = 0
+for i in range(n):
+    m.append(int(input()))
+# 역방향으로 for문
+for i in range(n - 1, -1, -1):
+    if k == 0:
+        break
+    # coin이 k보다 크면 pass
+    if m[i] > k:
+        continue
+    num += k // m[i]
+    k %= m[i]
+print(num)
+```
